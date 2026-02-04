@@ -3,76 +3,171 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Augustus Pugin</title>
+    <title>Big Ben</title>
     <style>
+        :root {
+            --wiki-bg: #f6f6f6;
+            --wiki-content-bg: white;
+            --wiki-border: #a2a9b1;
+            --wiki-light: #f8f9fa;
+            --wiki-gray: #f0f0f0;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: 'Linux Libertine', 'Georgia', serif;
-            background: #f6f6f6;
+            font-family: 'Linux Libertine', Georgia, serif;
+            background: var(--wiki-bg);
             color: #000;
             margin: 0;
             padding: 0;
+            line-height: 1.6;
         }
+
         #content {
             margin: 1em auto;
             max-width: 1200px;
-            background: white;
-            border: 1px solid #a2a9b1;
+            background: var(--wiki-content-bg);
+            border: 1px solid var(--wiki-border);
             padding: 1.5em;
+            font-size: 1rem;
         }
+
         h1 {
-            font-size: 2.5em;
-            margin: 0 0 0.25em;
-            border-bottom: 1px solid #a2a9b1;
+            font-size: 2.3em;
+            margin: 0 0 0.4em;
+            border-bottom: 1px solid var(--wiki-border);
+            padding-bottom: 0.2em;
         }
+
+        h2 {
+            font-size: 1.8em;
+            border-bottom: 1px solid var(--wiki-border);
+            margin: 1.8em 0 0.8em;
+            padding-bottom: 0.2em;
+        }
+
+        p {
+            margin: 0.8em 0;
+        }
+
+        /* Инфобокс */
         .infobox {
-            float: right;
-            width: 300px;
-            margin: 0 0 1em 1em;
-            border: 1px solid #a2a9b1;
-            background: #f8f9fa;
-            padding: 0.5em;
+            width: 100%;
+            margin: 0 0 1.5em;
+            border: 1px solid var(--wiki-border);
+            background: var(--wiki-light);
+            padding: 0.6em;
             font-size: 0.95em;
         }
+
         .infobox caption {
             font-weight: bold;
-            font-size: 1.2em;
-            padding: 0.3em;
-            background: #f0f0f0;
-            border-bottom: 1px solid #a2a9b1;
+            font-size: 1.3em;
+            padding: 0.4em;
+            background: var(--wiki-gray);
+            border-bottom: 1px solid var(--wiki-border);
+            text-align: center;
         }
+
         .infobox img {
             width: 100%;
             height: auto;
-            border: 1px solid #a2a9b1;
+            display: block;
+            border: 1px solid var(--wiki-border);
+            margin: 0.4em 0;
         }
-        h2 {
-            font-size: 1.8em;
-            border-bottom: 1px solid #a2a9b1;
-            margin-top: 1.5em;
+
+        /* Портрет Пьюджина */
+        .portrait {
+            width: 100%;
+            max-width: 240px;
+            margin: 1em auto;
+            display: block;
+            border: 1px solid #aaa;
+            background: #f9f9f9;
+            text-align: center;
+            padding: 0.4em;
         }
-        p {
-            line-height: 1.6;
-            margin: 0.8em 0;
-        }
-        ul {
-            margin: 0.5em 0 0.5em 2em;
-        }
-        .toc {
-            border: 1px solid #a2a9b1;
-            background: #f8f9fa;
-            padding: 0.5em;
-            margin: 1em 0;
-            width: 250px;
-            float: right;
-            clear: right;
-        }
-        .toc ul {
-            list-style: none;
-            padding: 0;
+
+        .portrait img {
+            width: 100%;
+            height: auto;
+            border: none;
             margin: 0;
         }
-        .toc li {
-            margin: 0.3em 0;
+
+        .portrait p {
+            margin: 0.4em 0 0;
+            font-size: 0.9em;
+        }
+
+        /* Изображения в тексте */
+        img:not(.infobox img):not(.portrait img) {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 1em auto;
+        }
+
+        /* ==============================================
+           Адаптивность — mobile-first
+        ============================================== */
+
+        /* Маленькие экраны (мобильные) — базовые стили уже заданы выше */
+
+        /* Планшеты и выше (~ ≥ 600–768 px) */
+        @media (min-width: 600px) {
+            #content {
+                padding: 2em;
+                margin: 1.5em auto;
+            }
+
+            h1 { font-size: 2.6em; }
+            h2 { font-size: 2em; }
+
+            .infobox {
+                width: 320px;
+                float: right;
+                margin: 0 0 1.2em 1.2em;
+            }
+
+            .portrait {
+                float: right;
+                margin: 0 0 1em 1em;
+                width: 240px;
+            }
+        }
+
+        /* Десктоп / большие планшеты (~ ≥ 900–1024 px) */
+        @media (min-width: 900px) {
+            #content {
+                padding: 2.2em 3em;
+            }
+
+            .infobox {
+                width: 340px;
+            }
+
+            .portrait {
+                width: 260px;
+            }
+        }
+
+        /* Очень большие экраны (ограничение контента) */
+        @media (min-width: 1400px) {
+            #content {
+                padding: 2.5em 4em;
+            }
+        }
+
+        /* Улучшение читаемости на очень узких экранах */
+        @media (max-width: 480px) {
+            h1 { font-size: 2em; }
+            h2 { font-size: 1.6em; }
+            body  { font-size: 0.98rem; }
         }
     </style>
 </head>
@@ -85,10 +180,10 @@
 <table class="infobox">
     <caption>Big Ben</caption>
     <tr>
-        <td colspan="2"><img src="https://assets.dm.rccl.com/is/image/RoyalCaribbeanCruises/royal/content/destinations/british-isles/view-big-ben-westminster-bridge-sunny-day-united-kingdom.jpg?$800x450$" alt="Big Ben" style="width:100%;"></td>
+        <td colspan="2"><img src="https://assets.dm.rccl.com/is/image/RoyalCaribbeanCruises/royal/content/destinations/british-isles/view-big-ben-westminster-bridge-sunny-day-united-kingdom.jpg?$800x450$" alt="Big Ben"></td>
     </tr>
     <tr>
-        <td colspan="2"><img src="https://c8.alamy.com/comp/HDF17W/close-up-of-the-clock-face-of-big-ben-in-westminster-london-on-a-clear-HDF17W.jpg" alt="Циферблат Big Ben" style="width:100%; margin-top:0.5em;"></td>
+        <td colspan="2"><img src="https://c8.alamy.com/comp/HDF17W/close-up-of-the-clock-face-of-big-ben-in-westminster-london-on-a-clear-HDF17W.jpg" alt="Циферблат Big Ben" style="margin-top:0.5em;"></td>
     </tr>
 </table>
 
@@ -98,14 +193,10 @@
 
 <p>The idea of creating a clock tower for the new parliament building (the old one, built in the 11th century, almost completely burned down in 1834) was proposed by architect Charles Barry. However, Big Ben was designed by another architect, Augustus Pugin. He was born into the family of a French draftsman and, as a teenager, designed medieval-style furniture for Windsor Castle. It was thanks to Pugin that Big Ben acquired its famous look.</p>
 
-<table style="margin:1em; float:right; width:220px; border:1px solid #aaa; background:#f9f9f9;">
-    <tr>
-        <td><img style="width: 26rem; height: 24rem;" src="https://motivated-card-12d34c19bf.media.strapiapp.com/Augustus_Welby_Northmore_Pugin_ebb9eacbb2.jpg" alt="Augustus Pugin"></td>
-    </tr>
-    <tr>
-        <td style="text-align:center; font-size:0.9em; padding:0.3em;">Augustus Pugin</td>
-    </tr>
-</table>
+<div class="portrait">
+    <img src="https://motivated-card-12d34c19bf.media.strapiapp.com/Augustus_Welby_Northmore_Pugin_ebb9eacbb2.jpg" alt="Augustus Pugin">
+    <p>Augustus Pugin</p>
+</div>
 
 <p>The construction of the tower lasted for 16 years, from 1843 to 1859. Alas, Pugin did not manage to see his creation, which eventually became one of the main attractions of England: he died in 1852.</p>
 
